@@ -24,15 +24,15 @@ function getWeather() {
         if(whetherData.list[i].dt_txt.search(finalDate) == 0)
         {
           todayCounter++;
-          // console.log(whetherData.list)
-          // console.log(todayCounter);
+          
+           console.log(todayCounter);
           temperatureDay1 += whetherData.list[i].main.temp;
           weatherDay1 = whetherData.list[i].weather[0].main;
           descriptionday1 = whetherData.list[i].weather[0].description;    
           document.getElementById("temp1").innerHTML =  Math.round((temperatureDay1/todayCounter)-273.15) + "°C";
           document.getElementById("weather").innerHTML =  weatherDay1 ;
           document.getElementById("description").innerHTML =  descriptionday1 ;
-          document.getElementById("date1").innerHTML ="Today";
+          document.getElementById("date1").innerHTML = whetherData.list[i].dt_txt.substring(0,10);
         }
         else{
           break;
@@ -46,7 +46,9 @@ function getWeather() {
       var descriptionDay2 = '';
       for (var i = todayCounter; i < todayCounter + 8; i++) {
         temperatureDay2 += whetherData.list[i].main.temp;        
-        
+        console.log(whetherData.list,"hello")
+        console.log(whetherData.list[i].dt_txt);
+        document.getElementById("date2").innerHTML = whetherData.list[i].dt_txt.substring(0,10);
       }
       weatherDay2 = whetherData.list[i].weather[0].main;
           descriptionday2 = whetherData.list[i].weather[0].description;    
@@ -54,9 +56,10 @@ function getWeather() {
           document.getElementById("temp2").innerHTML = Math.round((temperatureDay2/8)-273.15)+ "°C";
           document.getElementById("weather2").innerHTML =  weatherDay2 ;
           document.getElementById("description2").innerHTML = descriptionday2 ;
-          if(whetherData.list[i].dt_txt!=finalDate){
-            document.getElementById("date2").innerHTML = "Tomorrow";
-          }
+          
+          // if(whetherData.list[i].dt_txt!=finalDate){
+          
+          // }
      
       // ========================================================================
 
@@ -65,15 +68,17 @@ function getWeather() {
       var weatherDay3 = '';
       var descriptionday3 = '';
       for (var i = todayCounter+8; i < todayCounter + 16; i++) {        
-        temperatureDay3 += whetherData.list[i].main.temp;        
+        temperatureDay3 += whetherData.list[i].main.temp;    
+        // console.log(whetherData.list,"hello")
+        document.getElementById("date3").innerHTML = whetherData.list[i].dt_txt.substring(0,10);
       }
-      
+        
            weatherDay3 = whetherData.list[i].weather[0].main;
           descriptionday3 = whetherData.list[i].weather[0].description;
           document.getElementById("temp3").innerHTML =  Math.round((temperatureDay3/8)-273.15)+ "°C";
           document.getElementById("weather3").innerHTML =   weatherDay3 ;
           document.getElementById("description3").innerHTML =   descriptionday3 ;
-          document.getElementById("date3").innerHTML = whetherData.list[i].dt_txt.substring(0,10);
+         
      
       // ========================================================================
 
@@ -82,7 +87,8 @@ function getWeather() {
       var weatherDay4 = '';
       var descriptionday4 = '';
       for (var i = todayCounter+16; i < todayCounter + 24; i++) {
-        temperatureDay4 += whetherData.list[i].main.temp;        
+        temperatureDay4 += whetherData.list[i].main.temp;  
+        document.getElementById("date4").innerHTML = whetherData.list[i].dt_txt.substring(0,10);      
       }
       
       weatherDay4 = whetherData.list[i].weather[0].main;
@@ -91,7 +97,7 @@ function getWeather() {
           document.getElementById("temp4").innerHTML =  Math.round((temperatureDay4/8)-273.15)+ "°C";
           document.getElementById("weather4").innerHTML =  weatherDay4;
           document.getElementById("description4").innerHTML =   descriptionday4 ;
-          document.getElementById("date4").innerHTML = whetherData.list[i].dt_txt.substring(0,10);
+          
      
       // ========================================================================
 
@@ -101,16 +107,17 @@ function getWeather() {
       var weatherDay5= '';
       var descriptionday5 = '';
       for (var i = todayCounter+24; i < todayCounter + 32; i++) {
-        temperatureDay5 += whetherData.list[i].main.temp;        
+        temperatureDay5 += whetherData.list[i].main.temp;  
+         console.log(whetherData.list[i].weather[0].main);      
+        document.getElementById("date5").innerHTML = whetherData.list[i].dt_txt.substring(0,10);
+        document.getElementById("weather5").innerHTML =  whetherData.list[i].weather[0].main;
+        document.getElementById("description5").innerHTML =  whetherData.list[i].weather[0].description; 
       }
          
-          weatherDay5 = whetherData.list[i].weather[0].main;
-          descriptionday5 = whetherData.list[i].weather[0].description;
+         
           
           document.getElementById("temp5").innerHTML =  Math.round((temperatureDay5/8)-273.15) + "°C";
-          document.getElementById("weather5").innerHTML =  weatherDay5 ;
-          document.getElementById("description5").innerHTML =  descriptionday5 ;
-          document.getElementById("date5").innerHTML = whetherData.list[i].dt_txt.substring(0,10);
+          
    
       // ========================================================================
     }
